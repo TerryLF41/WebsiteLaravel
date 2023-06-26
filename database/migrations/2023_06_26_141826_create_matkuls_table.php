@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('matkuls', function (Blueprint $table) {
             $table->id();
+            $table->string("nama_matkul");
+            $table->integer("sks");
+            $table->boolean("status");
             $table->timestamps();
         });
     }
