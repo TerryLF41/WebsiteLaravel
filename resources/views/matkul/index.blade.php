@@ -72,11 +72,11 @@
                                                 <div class="btn-group">
                                                     <a class="btn btn-info"
                                                         href="{{ route('matkuls.show', $matkul->kode_matkul) }}">Show</a>
-                                                    @can('role-edit')
+                                                    {{-- @can('role-edit') --}}
                                                         <a class="btn btn-primary"
                                                             href="{{ route('matkuls.edit', $matkul->kode_matkul) }}">Edit</a>
-                                                    @endcan
-                                                    @can('role-delete')
+                                                    {{-- @endcan --}}
+                                                    {{-- @can('role-delete') --}}
                                                         <form method="POST"
                                                             action="{{ route('matkuls.destroy', $matkul->kode_matkul) }}"
                                                             style="display:inline">
@@ -85,7 +85,7 @@
                                                             <input type="submit" value="Delete"
                                                                 class="btn btn-block btn-outline-danger">
                                                         </form>
-                                                    @endcan
+                                                    {{-- @endcan --}}
                                                 </div>
                                             </td>
                                         </tr>
