@@ -41,10 +41,23 @@
                                             <x-input-error class="mt-2" :messages="$errors->get('hari')" />
                                         </div>
                                         <div class="mt-4">
+<<<<<<< Updated upstream:resources/views/matkulTime/create.blade.php
                                             <x-input-label for="jam" :value="__('Jam')" />
                                             <x-text-input id="jam" name="name" type="time"
                                                 class="mt-1 block w-80" autofocus autocomplete="jam" />
                                             <x-input-error class="mt-2" :messages="$errors->get('jam')" />
+=======
+                                            <x-input-label for="jamMulai" :value="__('JamMulai')" />
+                                            <x-text-input id="jamMulai" name="jamMulai" type="time"
+                                                class="mt-1 block w-80" autofocus autocomplete="jamMulai" />
+                                            <x-input-error class="mt-2" :messages="$errors->get('jamMulai')" />
+                                        </div>
+                                        <div class="mt-4">
+                                            <x-input-label for="jamSelesai" :value="__('JamSelesai')" />
+                                            <x-text-input id="jamSelesai" name="jamSelesai" type="time"
+                                                class="mt-1 block w-80" autofocus autocomplete="jamSelesai" />
+                                            <x-input-error class="mt-2" :messages="$errors->get('jamSelesai')" />
+>>>>>>> Stashed changes:resources/views/mk_Tawars/create.blade.php
                                         </div>
 
                                         <div>

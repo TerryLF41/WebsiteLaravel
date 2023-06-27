@@ -40,13 +40,15 @@
                                 <br>
                                 <table class="table table-bordered">
                                     <tr>
-                                        <th>Jam</th>
+                                        <th>Jam Mulai</th>
+                                        <th>Jam Selesai</th>
                                         <th>Hari</th>
                                         <th width="280px">Action</th>
                                     </tr>
                                     @foreach ($matkuls as $key => $matkul)
                                         <tr>
-                                            <td>{{ $matkul->jam }}</td>
+                                            <td>{{ $matkul->jamMulai }}</td>
+                                            <td>{{ $matkul->jamSelesai }}</td>
                                             <td>{{ $matkul->hari }}</td>
                                             <td>
                                                 <div class="btn-group">

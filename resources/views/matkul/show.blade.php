@@ -35,6 +35,48 @@
                                             @endforeach
                                         @endif
                                     </div>
+<<<<<<< Updated upstream
+=======
+                                    <div class="form-group">
+                                        <strong>Kode Program Studi:</strong>
+                                        <span>{{ $matkul->program_studi_kode_jurusan }}</span>
+                                    </div>
+                                    <table class="table table-bordered">
+                                        <tr>
+                                            <th>Jam Mulai</th>
+                                            <th>Jam Selesai</th>
+                                            <th>Hari</th>
+                                            <th width="280px">Action</th>
+                                        </tr>
+                                        @foreach ($mk_Tawars as $key => $matkul)
+                                            <tr>
+                                                <td>{{ $matkul->jamMulai }}</td>
+                                                <td>{{ $matkul->jamSelesai }}</td>
+                                                <td>{{ $matkul->hari }}</td>
+                                                <td>
+                                                    <div class="btn-group">
+                                                        {{-- <a class="btn btn-info"
+                                                            href="{{ route('schedules.show', $matkul->kode_matkul) }}">Show</a> --}}
+                                                        {{-- @can('role-edit') --}}
+                                                        {{-- <a class="btn btn-primary"
+                                                            href="{{ route('schedules.edit', $matkul->kode_matkul) }}">Edit</a> --}}
+                                                        {{-- @endcan --}}
+                                                        {{-- @can('role-delete') --}}
+                                                        {{-- <form method="POST"
+                                                            action="{{ route('schedules.destroy', $matkul->kode_matkul) }}"
+                                                            style="display:inline">
+                                                            @method('DELETE')
+                                                            @csrf
+                                                            <input type="submit" value="Delete"
+                                                                class="btn btn-block btn-outline-danger">
+                                                        </form> --}}
+                                                        {{-- @endcan --}}
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </table>
+>>>>>>> Stashed changes
                                 </div>
                             </div>
                         </div>
