@@ -31,10 +31,10 @@
                             </div>
                             <div class="card-body">
                                 <div>
-                                    {{-- @can('prodi-create') --}}
+                                    @can('prodi-create')
                                         <a class="btn btn-success" href="{{ route('prodis.create') }}">
                                             Create New Prodi</a>
-                                    {{-- @endcan --}}
+                                    @endcan
                                 </div>
                                 <table class="table table-bordered">
                                     <tr>
@@ -50,11 +50,11 @@
                                                 <div class="btn-group">
                                                     <a class="btn btn-info"
                                                         href="{{ route('prodis.show', $prodi->kode_jurusan) }}">Show</a>
-                                                    {{-- @can('role-edit') --}}
+                                                    @can('prodi-edit')
                                                         <a class="btn btn-primary"
                                                             href="{{ route('prodis.edit', $prodi->kode_jurusan) }}">Edit</a>
-                                                    {{-- @endcan --}}
-                                                    {{-- @can('role-delete') --}}
+                                                    @endcan
+                                                    @can('prodi-delete')
                                                         <form method="POST"
                                                             action="{{ route('prodis.destroy', $prodi->kode_jurusan) }}"
                                                             style="display:inline">
@@ -62,7 +62,7 @@
                                                             @csrf
                                                             <input type="submit" value="Delete" class="btn btn-block btn-outline-danger">
                                                         </form>
-                                                    {{-- @endcan --}}
+                                                    @endcan
                                                 </div>
                                             </td>
                                         </tr>
