@@ -46,9 +46,6 @@
                                         <th>Semester</th>
                                         <th>Status</th>
                                         <th>Kode Program Studi</th>
-                                        <th>Sks</th>
-                                        <th>Status</th>
-                                        <th>Kode Program Studi</th>
                                         <th width="280px">Action</th>
                                     </tr>
                                     @foreach ($matkuls as $key => $matkul)
