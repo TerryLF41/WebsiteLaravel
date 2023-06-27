@@ -40,6 +40,7 @@
                                     <x-input-error :messages="$errors->get('tahun_ajar')" class="mt-2" />
                                 </div>
                                 <br>
+                                <form >
                                 <table class="table table-bordered">
                                     <tr>
                                         <th>No</th>
@@ -63,20 +64,21 @@
                                             @endif
                                             <td>{{ $matkul->program_studi_kode_jurusan }}</td>
                                             <td>
-                                                <div class="btn-group">             
-                                                    {{-- <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"> --}}
+                                                <div class="btn-group">
+                                                    <input type="checkbox" id="matkul" name="matkul[]" value="{{ $matkul->kode_matkul }}">
                                                 </div>
                                             </td>
                                         </tr>
                                     @endforeach
                                 </table>
-                                <div>
-                                    {{-- Minta Id User, Id Matkul, Id Proyek Pendidikan --}}
-                                    {{-- @can('role-create') --}}
-                                    <a class="btn btn-success" href="{{ route('matkuls.create') }}">
-                                        Ambil Matkul</a>
-                                    {{-- @endcan --}}
-                                </div>
+                                    <div>
+                                        {{-- Minta Id User, Id Matkul, Id Proyek Pendidikan --}}
+                                        {{-- @can('role-create') --}}
+                                        <input type="submit" class="btn btn-success" href="{{ route('matkuls.create') }}">
+                                            Ambil Matkul
+                                        {{-- @endcan --}}
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
