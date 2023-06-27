@@ -19,6 +19,7 @@ class MatkulController extends Controller
     public function index(Request $request): View
     {
         // dd("index");
+        
         $matkuls = Matkul::all();
         return view('matkul.index', compact('matkuls'));
     }
@@ -37,19 +38,21 @@ class MatkulController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $this->validate($request, [
-            'name' => 'required|unique:matkul,name',
-            'permission' => 'required',
+            'nama_matkul' => 'required|string',
+            'sks' => 'required|integer',
+            'semester' => 'required|integer',
+            'status' => 'required',
+            'prodi' => 'required',
         ]);
 
-        $matkul = Matkul::create([
-            'name' => $request->input('name'),
+        Matkul::create([
+            'nama_matkul' => $request->input('nama_matkul'),
             'sks' => $request->input('sks'),
             'semester' => $request->input('semester'),
-            'prodi' => $request->input('prodi')
+            'status' => $request->input('status'),
+            'program_studi_kode_jurusan' => $request->input('prodi')
         ]);
-        $matkul->syncPermissions($request->input('permission'));
-
-        return redirect()->route('matkul.index')
+        return redirect()->route('matkuls.index')
             ->with('success', 'Matkul created successfully');
     }
 
@@ -59,11 +62,7 @@ class MatkulController extends Controller
     public function show(string $id): View
     {
         $matkul = Matkul::find($id);
-        $matkulPermissions = Permission::join("matkul_has_permissions", "matkul_has_permissions.permission_id", "=", "permissions.id")
-            ->where("matkul_has_permissions.matkul_id", $id)
-            ->get();
-
-        return view('matkul.show', compact('matkul', 'matkulPermissions'));
+        return view('matkul.show', compact('matkul'));
     }
 
     /**
@@ -86,8 +85,11 @@ class MatkulController extends Controller
     public function update(Request $request, $id): RedirectResponse
     {
         $this->validate($request, [
-            'name' => 'required',
-            'permission' => 'required',
+            'nama_matkul' => 'required|string',
+            'sks' => 'required|integer',
+            'semester' => 'required|integer',
+            'status' => 'required',
+            'prodi' => 'required',
         ]);
 
         $matkul = Matkul::find($id);
