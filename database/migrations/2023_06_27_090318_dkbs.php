@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('dkbs', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('matkul_kode_matkul');
+            $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('matkul_kode_matkul')->references('kode_matkul')->on('matkuls');
         });
