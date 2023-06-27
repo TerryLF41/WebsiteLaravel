@@ -36,7 +36,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/schedules/{kode_matkul}', [Mk_TawarController::class, 'create'])->name('schedules.create');
     Route::post('/schedules/store', [Mk_TawarController::class, 'store'])->name('schedules.store');
     // Route::resource('schedules', Mk_TawarController::class);
-    Route::resource('dkbs', DkbsController::class);
+    Route::get('/dkbs', [DkbsController::class, 'index'])->name('dkbs.index');
+    Route::get('/dkbs/create', [DkbsController::class, 'create'])->name('dkbs.create');
+    Route::post('/dkbs/store', [DkbsController::class, 'store'])->name('dkbs.store');
+    // Route::resource('dkbs', DkbsController::class);
     Route::resource('prodis', ProgramStudiController::class);
 });
 

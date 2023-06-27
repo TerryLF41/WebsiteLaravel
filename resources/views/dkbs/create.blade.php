@@ -14,7 +14,7 @@
                     <div class="col-md-12">
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="cart-title">Daftar Matkul Diambil</h3>
+                                <h3 class="cart-title">Daftar Matkul Yang Tersedia</h3>
                             </div>
                             <div class="card-tools">
                                 @if (session('error'))
@@ -31,21 +31,9 @@
                                 @endif
                             </div>
                             <div class="card-body">
-                                <div>
-                                    {{-- @can('role-create') --}}
-                                        <a class="btn btn-success" href="{{ route('dkbs.create') }}">
-                                            Create New Matkul</a>
-                                    {{-- @endcan --}}
-                                </div>
-                                {{-- <div class="mt-4">
-                                    <x-input-label for="tahun_ajar" :value="__('Tahun Ajaran')" />
-                                    <select name="tahun_ajar" id="tahun_ajar" class="mt-1 block w-80">
-                                        <option value="{{ false }}">Ganjil</option>
-                                        <option value="{{ true }}">Genap</option>
-                                    </select>
-                                    <x-input-error :messages="$errors->get('tahun_ajar')" class="mt-2" />
-                                </div> --}}
                                 <br>
+                                <form action="{{route("dkbs.store")}}" method="post">
+                                    @csrf
                                 <table class="table table-bordered">
                                     <tr>
                                         <th>No</th>
@@ -55,15 +43,22 @@
                                         <th>Kode Program Studi</th>
                                     </tr>
                                     @foreach ($matkuls as $key => $matkul)
+                                   
                                         <tr>
                                             <td>{{ $key + 1 }}</td>
                                             <td>{{ $matkul->nama_matkul }}</td>
                                             <td>{{ $matkul->sks }}</td>
                                             <td>{{ $matkul->semester }}</td>
                                             <td>{{ $matkul->program_studi_kode_jurusan }}</td>
+                                            <td><input type="checkbox" name="matkulAmbil[]" id="matkulAmbil" value="{{$matkul->kode_matkul}}"></td>
                                         </tr>
+                                    </form>
                                     @endforeach
                                 </table>
+                                <div>
+                                    <x-primary-button class="mt-4">{{ __('Create') }}</x-primary-button>
+                                </div>
+                            </form>
                             </div>
                         </div>
                     </div>
