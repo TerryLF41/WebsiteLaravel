@@ -33,7 +33,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::resource('roles', RoleController::class);
     Route::resource('matkuls', MatkulController::class);
-    Route::resource('mk_Tawars', Mk_TawarController::class);
+    Route::resource('schedules', Mk_TawarController::class);
     Route::resource('dkbs', DkbsController::class);
     Route::resource('prodis', ProgramStudiController::class);
 });

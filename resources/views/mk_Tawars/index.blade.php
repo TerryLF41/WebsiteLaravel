@@ -33,7 +33,7 @@
                             <div class="card-body">
                                 <div>
                                     {{-- @can('role-create') --}}
-                                        <a class="btn btn-success" href="{{ route('mk_Tawars.create') }}">
+                                        <a class="btn btn-success" href="{{ route('schedules.create') }}">
                                             Create New Schedule</a>
                                     {{-- @endcan --}}
                                 </div>
@@ -51,14 +51,14 @@
                                             <td>
                                                 <div class="btn-group">
                                                     <a class="btn btn-info"
-                                                        href="{{ route('mk_Tawars.show', $matkul->kode_matkul) }}">Show</a>
+                                                        href="{{ route('schedules.show', $matkul->kode_matkul) }}">Show</a>
                                                     @can('role-edit')
                                                         <a class="btn btn-primary"
-                                                            href="{{ route('mk_Tawars.edit', $matkul->kode_matkul) }}">Edit</a>
+                                                            href="{{ route('schedules.edit', $matkul->kode_matkul) }}">Edit</a>
                                                     @endcan
                                                     @can('role-delete')
                                                         <form method="POST"
-                                                            action="{{ route('mk_Tawars.destroy', $matkul->kode_matkul) }}"
+                                                            action="{{ route('schedules.destroy', $matkul->kode_matkul) }}"
                                                             style="display:inline">
                                                             @method('DELETE')
                                                             @csrf

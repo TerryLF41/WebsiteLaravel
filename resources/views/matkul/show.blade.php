@@ -14,7 +14,7 @@
                     <div class="col-md-6">
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="cart-title">{{ $role->name }}</h3>
+                                <h3 class="cart-title">{{ $matkul->name }}</h3>
                             </div>
                             <div class="card-body">
                                 <div>

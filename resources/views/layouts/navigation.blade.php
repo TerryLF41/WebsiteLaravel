@@ -6,7 +6,8 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                        {{-- <x-application-logo class="block h-9 w-auto fill-current text-gray-800" /> --}}
+                        <img src="{{asset("storage/logo/maranatha.png")}}" alt="logo maranatha" width="50px">
                     </a>
                 </div>
 
@@ -17,6 +18,9 @@
                     </x-nav-link>
                     <x-nav-link :href="route('matkuls.index')" :active="request()->routeIs('matkuls.index')">
                         {{ __('Matkul') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('schedules.index')" :active="request()->routeIs('schedules.index')">
+                        {{ __('Schedule') }}
                     </x-nav-link>
                     <x-nav-link :href="route('prodis.index')" :active="request()->routeIs('prodis.index')">
                         {{ __('Prodi') }}

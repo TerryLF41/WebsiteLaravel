@@ -17,6 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('proyek_pendidikan');
             $table->string("jam");
             $table->string("hari");
+            $table->timestamps();
             $table->foreign('matkul_kode_matkul')->references('kode_matkul')->on('matkuls');
             $table->foreign('proyek_pendidikan')->references('id')->on('proyek_pendidikans');
         });

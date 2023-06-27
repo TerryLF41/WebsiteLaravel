@@ -47,7 +47,7 @@ class Mk_TawarController extends Controller
             'hari' => $request->input('hari'),
             'jam' => $request->input('jam'),
         ]);
-        return redirect()->route('mk_Tawars.index')
+        return redirect()->route('schedules.index')
             ->with('success', 'Schedule created successfully');
     }
 
