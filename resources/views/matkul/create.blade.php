@@ -56,8 +56,8 @@
                                         <div class="mt-4">
                                             <x-input-label for="status" :value="__('Status')" />
                                             <select name="status" id="status" class="mt-1 block w-80">
-                                                <option value="{{ false }}">praktikum</option>
-                                                <option value="{{ true }}">teori</option>
+                                                <option value="{{ 0 }}">praktikum</option>
+                                                <option value="{{ 1 }}">teori</option>
                                             </select>
                                             <x-input-error :messages="$errors->get('status')" class="mt-2" />
                                         </div>
