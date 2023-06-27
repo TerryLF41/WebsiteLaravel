@@ -13,8 +13,9 @@ return new class extends Migration {
         Schema::create('matkuls', function (Blueprint $table) {
             $table->id('kode_matkul');
             $table->string("nama_matkul");
-            $table->integer("sks");
-            $table->string("status");
+            $table->unsignedBigInteger("sks");
+            $table->boolean("status");
+            $table->unsignedBigInteger("semester");
             $table->unsignedBigInteger('program_studi_kode_jurusan');
             $table->timestamps();
             $table->foreign('program_studi_kode_jurusan')->references('kode_jurusan')->on('program_studis');
