@@ -63,9 +63,9 @@
                                             <td>{{ $matkul->sks }}</td>
                                             <td>{{ $matkul->semester }}</td>
                                             @if ($matkul->status == 1)
-                                                <td>Active</td>
+                                                <td>Teori</td>
                                             @else
-                                                <td>Inactive</td>
+                                                <td>Praktikum</td>
                                             @endif
                                             <td>{{ $matkul->program_studi_kode_jurusan }}</td>
                                             <td>
