@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -15,10 +14,10 @@ return new class extends Migration
             $table->id('kode_matkul');
             $table->string("nama_matkul");
             $table->integer("sks");
-            $table->timestamps('created_at');
-            $table->timestamps('updated_at');
-            $table->foreign('program_studi_kode_jurusan')->references('program_studis')->on('kode_jurusan');
             $table->string("status");
+            $table->unsignedBigInteger('program_studi_kode_jurusan');
+            $table->timestamps();
+            $table->foreign('program_studi_kode_jurusan')->references('kode_jurusan')->on('program_studis');
         });
     }
 

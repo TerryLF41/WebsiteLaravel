@@ -18,6 +18,14 @@ class PermissionTableSeeder extends Seeder
             'role-create',
             'role-edit',
             'role-delete',
+            'informatika-list',
+            'informatika-create',
+            'informatika-edit',
+            'informatika-delete',
+            'olb-list',
+            'olb-create',
+            'olb-edit',
+            'olb-delete',
          ];
          
          foreach ($permissions as $permission) {

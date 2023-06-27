@@ -22,6 +22,7 @@ class User extends Authenticatable
         'username',
         'email',
         'password',
+        'program_studi_kode_jurusan'
     ];
 
     /**
