@@ -15,6 +15,17 @@
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
+         <!-- Program Studi -->
+         <div>
+            <x-input-label for="prodi" :value="__('Prodi')" />
+            <select name="prodi" id="prodi" class="block mt-1 w-full">
+                @foreach ($prodis as $prodi)
+                    <option value="{{$prodi->kode_jurusan}}">{{$prodi->nama}}</option>
+                @endforeach
+            </select>
+            {{-- <x-text-input id="prodi" class="block mt-1 w-full" type="text" name="prodi" :value="old('prodi')" required autofocus autocomplete="username" /> --}}
+            <x-input-error :messages="$errors->get('prodi')" class="mt-2" />
+        </div>
 
         <!-- Password -->
         <div class="mt-4">
