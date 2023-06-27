@@ -5,24 +5,39 @@ namespace App\Http\Controllers;
 use App\Models\Matkul;
 use App\Models\Mk_tawars;
 use App\Models\Program_studi;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Spatie\Permission\Models\Permission;
 
 use DB;
+
 class MatkulController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:prodi-list|prodi-create|prodi-edit|prodi-delete', ['only' => ['index', 'show']]);
+        $this->middleware('permission:prodi-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:prodi-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:prodi-delete', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      */
-    
+
     public function index(Request $request): View
     {
         // dd("index");
-        $tahunAjaran = 0;
-        $matkuls = Matkul::where('prodi', 1)->get();
-        return view('matkul.index', compact('matkuls', 'tahunAjaran'));
+        // $tahunAjaran = 0;
+        $user = Auth::user();
+        if ($user->hasRole('Admin')) {
+            $matkuls = Matkul::all();
+        } else {
+            $matkuls = Matkul::where('program_studi_kode_jurusan', $user->program_studi_kode_jurusan)->get();
+        }
+        // dd($user->program_studi_kode_jurusan);
+        return view('matkul.index', compact('matkuls'));
     }
     /**
      * Show the form for creating a new resource.
@@ -64,17 +79,17 @@ class MatkulController extends Controller
     {
         $matkul = Matkul::find($id);
         $mk_Tawars = Mk_tawars::all();
-        return view('matkul.show', compact('matkul','mk_Tawars'));
+        return view('matkul.show', compact('matkul', 'mk_Tawars'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(String $id): View
+    public function edit(string $id): View
     {
         $matkul = Matkul::find($id);
         $prodis = Program_studi::all();
-        return view('matkul.edit', compact('matkul','prodis'));
+        return view('matkul.edit', compact('matkul', 'prodis'));
     }
 
     /**
