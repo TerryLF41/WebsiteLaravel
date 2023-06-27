@@ -52,7 +52,6 @@
                                         <th>Name</th>
                                         <th>SKS</th>
                                         <th>Semester</th>
-                                        <th>Status</th>
                                         <th>Kode Program Studi</th>
                                     </tr>
                                     @foreach ($matkuls as $key => $matkul)
@@ -61,11 +60,6 @@
                                             <td>{{ $matkul->nama_matkul }}</td>
                                             <td>{{ $matkul->sks }}</td>
                                             <td>{{ $matkul->semester }}</td>
-                                            @if ($matkul->status == 1)
-                                                <td>Teori</td>
-                                            @else
-                                                <td>Praktikum</td>
-                                            @endif
                                             <td>{{ $matkul->program_studi_kode_jurusan }}</td>
                                             <td>
                                             </td>
