@@ -37,6 +37,14 @@
                                             Create New Matkul</a>
                                     {{-- @endcan --}}
                                 </div>
+                                <div class="mt-4">
+                                    <x-input-label for="tahun_ajar" :value="__('Tahun Ajaran')" />
+                                    <select name="tahun_ajar" id="tahun_ajar" class="mt-1 block w-80">
+                                        <option value="{{ false }}">Ganjil</option>
+                                        <option value="{{ true }}">Genap</option>
+                                    </select>
+                                    <x-input-error :messages="$errors->get('tahun_ajar')" class="mt-2" />
+                                </div>
                                 <br>
                                 <table class="table table-bordered">
                                     <tr>
