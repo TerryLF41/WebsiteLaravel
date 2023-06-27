@@ -18,6 +18,9 @@
                     <x-nav-link :href="route('matkuls.index')" :active="request()->routeIs('matkuls.index')">
                         {{ __('Matkul') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('prodis.index')" :active="request()->routeIs('prodis.index')">
+                        {{ __('Prodi') }}
+                    </x-nav-link>
                     @can('role-list')
                         <x-nav-link :href="route('roles.index')" :active="request()->routeIs('roles.index')">
                             {{ __('Role') }}
@@ -87,6 +90,9 @@
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('matkuls.index')" :active="request()->routeIs('matkuls.index')">
+                {{ __('Matkul') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('prodis.index')" :active="request()->routeIs('prodis.index')">
                 {{ __('Matkul') }}
             </x-responsive-nav-link>
             @can('role-list')

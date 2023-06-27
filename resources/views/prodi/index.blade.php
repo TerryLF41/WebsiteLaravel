@@ -31,10 +31,10 @@
                             </div>
                             <div class="card-body">
                                 <div>
-                                    @can('prodi-create')
-                                        <a class="btn btn-success" href="{{ route('roles.create') }}">
+                                    {{-- @can('prodi-create') --}}
+                                        <a class="btn btn-success" href="{{ route('prodis.create') }}">
                                             Create New Prodi</a>
-                                    @endcan
+                                    {{-- @endcan --}}
                                 </div>
                                 <table class="table table-bordered">
                                     <tr>
@@ -42,27 +42,27 @@
                                         <th>Name</th>
                                         <th width="280px">Action</th>
                                     </tr>
-                                    @foreach ($roles as $key => $role)
+                                    @foreach ($prodis as $key => $prodi)
                                         <tr>
                                             <td>{{ $key +1 }}</td>
-                                            <td>{{ $role->name }}</td>
+                                            <td>{{ $prodi->nama }}</td>
                                             <td>
                                                 <div class="btn-group">
                                                     <a class="btn btn-info"
-                                                        href="{{ route('roles.show', $role->id) }}">Show</a>
-                                                    @can('role-edit')
+                                                        href="{{ route('prodis.show', $prodi->kode_jurusan) }}">Show</a>
+                                                    {{-- @can('role-edit') --}}
                                                         <a class="btn btn-primary"
-                                                            href="{{ route('roles.edit', $role->id) }}">Edit</a>
-                                                    @endcan
-                                                    @can('role-delete')
+                                                            href="{{ route('prodis.edit', $prodi->kode_jurusan) }}">Edit</a>
+                                                    {{-- @endcan --}}
+                                                    {{-- @can('role-delete') --}}
                                                         <form method="POST"
-                                                            action="{{ route('roles.destroy', $role->id) }}"
+                                                            action="{{ route('prodis.destroy', $prodi->kode_jurusan) }}"
                                                             style="display:inline">
                                                             @method('DELETE')
                                                             @csrf
                                                             <input type="submit" value="Delete" class="btn btn-block btn-outline-danger">
                                                         </form>
-                                                    @endcan
+                                                    {{-- @endcan --}}
                                                 </div>
                                             </td>
                                         </tr>
