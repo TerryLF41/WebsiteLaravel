@@ -32,15 +32,20 @@
                             </div>
                             <div class="card-body">
                                 <div>
-                                    @can('role-create')
-                                        <a class="btn btn-success" href="{{ route('roles.create') }}">
+                                    {{-- @can('role-create') --}}
+                                        <a class="btn btn-success" href="{{ route('matkuls.create') }}">
                                             Create New Matkul</a>
-                                    @endcan
+                                    {{-- @endcan --}}
                                 </div>
+                                <br>
                                 <table class="table table-bordered">
                                     <tr>
                                         <th>No</th>
                                         <th>Name</th>
+                                        <th>SKS</th>
+                                        <th>Semester</th>
+                                        <th>Status</th>
+                                        <th>Kode Program Studi</th>
                                         <th>Sks</th>
                                         <th>Status</th>
                                         <th>Kode Program Studi</th>
