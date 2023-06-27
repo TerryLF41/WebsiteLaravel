@@ -23,7 +23,39 @@ class DkbsController extends Controller
         // dd("index");
         
         $dkbs = Dkbs::all();
+        // dd($dkbs);
         $user = Auth::user();
-        return view('dkbs.index', compact('dkbs'));
+        $matkuls = [];
+        foreach ($dkbs as $key => $value) {
+            // dd($value->matkul_kode_matkul);
+            $matkuls[$key] = Matkul::find($value->matkul_kode_matkul);
+        }
+        // dd($matkuls);
+        // $matkuls = Matkul::all();
+        return view('dkbs.index', compact('matkuls'));
+    }
+    public function create(Request $request): View
+    {
+        // dd("index");
+        $matkuls = Matkul::all();
+        return view('dkbs.create', compact('matkuls'));
+    }
+    public function store(Request $request): RedirectResponse
+    {
+        // dd($request->all());
+        $this->validate($request, [
+            'matkulAmbil' => 'required',
+        ]);
+        $matkulAmbil = $request->input("matkulAmbil");
+        // dd($matkulAmbil);
+        // dd(Auth::user()->id);
+        foreach ($matkulAmbil as $value) {
+            Dkbs::create([
+                'user_id' => Auth::user()->id,
+                'matkul_kode_matkul' => $value
+            ]);
+        }
+        return redirect()->route('dkbs.index')
+            ->with('success', 'Matkul sukses diambil');
     }
 }
