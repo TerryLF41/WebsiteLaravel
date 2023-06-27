@@ -12,6 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('dkbs', function (Blueprint $table) {
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('matkul_kode_matkul');
+            $table->unsignedBigInteger('proyek_pendidikan');
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('matkul_kode_matkul')->references('kode_matkul')->on('matkuls');
             $table->foreign('proyek_pendidikan')->references('id')->on('proyek_pendidikans');
