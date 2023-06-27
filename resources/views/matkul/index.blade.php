@@ -61,6 +61,7 @@
                                             <td>{{ $key + 1 }}</td>
                                             <td>{{ $matkul->nama_matkul }}</td>
                                             <td>{{ $matkul->sks }}</td>
+                                            <td>{{ $matkul->semester }}</td>
                                             @if ($matkul->status == 1)
                                                 <td>Active</td>
                                             @else
