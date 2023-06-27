@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Program_studi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProgramStudiController extends Controller
 {
@@ -12,7 +13,8 @@ class ProgramStudiController extends Controller
      */
     public function index()
     {
-        //
+        $prodis = Program_studi::all();
+        return view('prodi.index', compact('prodis'));
     }
 
     /**
@@ -20,7 +22,7 @@ class ProgramStudiController extends Controller
      */
     public function create()
     {
-        //
+        return view('prodi.create');
     }
 
     /**
@@ -28,38 +30,61 @@ class ProgramStudiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'nama' => 'required|string',
+        ]);
+        Program_studi::create(['nama' => $request->input('nama')]);
+
+        return redirect()->route('prodis.index')
+            ->with('success', 'Prodi created successfully');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Program_studi $program_studi)
+    public function show(string $id)
     {
-        //
+        $prodi = DB::table("program_studis")->where("program_studis.kode_jurusan", $id)
+            ->first();
+        ;
+        // dd($prodi);
+        return view('prodi.show', compact('prodi'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Program_studi $program_studi)
+    public function edit(string $id)
     {
-        //
+        $prodi = Program_studi::find($id);
+        // dd($prodi);
+        return view('prodi.edit', compact('prodi'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Program_studi $program_studi)
+    public function update(Request $request, string $id)
     {
-        //
+        $this->validate($request, [
+            'nama' => 'required',
+        ]);
+
+        $prodi = Program_studi::find($id);
+        $prodi->nama = $request->input('nama');
+        $prodi->save();
+
+        return redirect()->route('prodis.index')
+            ->with('success', 'Prodi updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Program_studi $program_studi)
+    public function destroy(string $id)
     {
-        //
+        Program_studi::destroy($id);
+        return redirect()->route('prodis.index')
+            ->with('success', 'Prodi Delete successfully');
     }
 }
