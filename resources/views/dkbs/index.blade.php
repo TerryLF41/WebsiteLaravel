@@ -54,7 +54,6 @@
                                         <th>Semester</th>
                                         <th>Status</th>
                                         <th>Kode Program Studi</th>
-                                        <th width="280px">Action</th>
                                     </tr>
                                     @foreach ($matkuls as $key => $matkul)
                                         <tr>
@@ -69,24 +68,6 @@
                                             @endif
                                             <td>{{ $matkul->program_studi_kode_jurusan }}</td>
                                             <td>
-                                                <div class="btn-group">
-                                                    <a class="btn btn-info"
-                                                        href="{{ route('matkuls.show', $matkul->kode_matkul) }}">Show</a>
-                                                    {{-- @can('role-edit') --}}
-                                                        <a class="btn btn-primary"
-                                                            href="{{ route('matkuls.edit', $matkul->kode_matkul) }}">Edit</a>
-                                                    {{-- @endcan --}}
-                                                    {{-- @can('role-delete') --}}
-                                                        <form method="POST"
-                                                            action="{{ route('matkuls.destroy', $matkul->kode_matkul) }}"
-                                                            style="display:inline">
-                                                            @method('DELETE')
-                                                            @csrf
-                                                            <input type="submit" value="Delete"
-                                                                class="btn btn-block btn-outline-danger">
-                                                        </form>
-                                                    {{-- @endcan --}}
-                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach
