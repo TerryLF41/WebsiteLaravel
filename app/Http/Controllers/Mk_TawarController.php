@@ -39,22 +39,16 @@ class Mk_TawarController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $this->validate($request, [
-            'nama_matkul' => 'required|string',
-            'sks' => 'required|integer',
-            'semester' => 'required|integer',
-            'status' => 'required',
-            'prodi' => 'required',
+            'hari' => 'required|string',
+            'jam' => 'required',
         ]);
 
-        Matkul::create([
-            'nama_matkul' => $request->input('nama_matkul'),
-            'sks' => $request->input('sks'),
-            'semester' => $request->input('semester'),
-            'status' => $request->input('status'),
-            'program_studi_kode_jurusan' => $request->input('prodi')
+        Mk_Tawars::create([
+            'hari' => $request->input('hari'),
+            'jam' => $request->input('jam'),
         ]);
-        return redirect()->route('matkuls.index')
-            ->with('success', 'Matkul created successfully');
+        return redirect()->route('mk_Tawars.index')
+            ->with('success', 'Schedule created successfully');
     }
 
     /**

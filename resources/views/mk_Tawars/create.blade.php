@@ -42,7 +42,7 @@
                                         </div>
                                         <div class="mt-4">
                                             <x-input-label for="jam" :value="__('Jam')" />
-                                            <x-text-input id="jam" name="name" type="time"
+                                            <x-text-input id="jam" name="jam" type="time"
                                                 class="mt-1 block w-80" autofocus autocomplete="jam" />
                                             <x-input-error class="mt-2" :messages="$errors->get('jam')" />
                                         </div>
