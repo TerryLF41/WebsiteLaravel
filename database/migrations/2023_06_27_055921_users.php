@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->timestamps('created_at');
             $table->timestamps('updated_at');
             $table->string('email')->unique();
-            $table->foreign('program_studi_kode_jurusan')->references('program_studi')->on('kode_jurusan');
+            $table->foreign('program_studi_kode_jurusan')->references('program_studis')->on('kode_jurusan');
         });
     }
 

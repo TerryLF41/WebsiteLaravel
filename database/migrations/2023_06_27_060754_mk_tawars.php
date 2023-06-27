@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('matkuls', function (Blueprint $table) {
+        Schema::create('mk_tawars', function (Blueprint $table) {
             $table->foreign('matkul_kode_matkul')->references('matkuls')->on('kode_matkul');
-            $table->foreign('proyek_pendidikan')->references('proyek_pendidikan')->on('id');
+            $table->foreign('proyek_pendidikan')->references('proyek_pendidikans')->on('id');
             $table->id("kelas");
             $table->string("jam");
             $table->string("hari");
