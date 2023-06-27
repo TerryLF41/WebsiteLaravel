@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Matkul;
 use App\Models\Dkbs;
 use App\Models\Program_studi;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
@@ -22,6 +23,7 @@ class DkbsController extends Controller
         // dd("index");
         
         $dkbs = Dkbs::all();
+        $user = Auth::user();
         return view('dkbs.index', compact('dkbs'));
     }
 }

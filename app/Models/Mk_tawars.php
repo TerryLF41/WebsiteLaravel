@@ -12,6 +12,5 @@ class Mk_tawars extends Model
         'jam',
         'hari',
         'matkul_kode_matkul',
-        'proyek_pendidikan',
     ];
 }

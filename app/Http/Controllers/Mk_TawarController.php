@@ -51,7 +51,7 @@ class Mk_TawarController extends Controller
             'jam' => $request->input('jam'),
             'matkul_kode_matkul'=> $request->input('matkul_kode_matkul'),
         ]);
-        return redirect()->route('schedules.index')
+        return redirect()->route('matkuls.show',$request->input('matkul_kode_matkul'))
             ->with('success', 'Schedule created successfully');
     }
 
