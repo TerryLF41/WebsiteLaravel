@@ -31,12 +31,6 @@
                                 @endif
                             </div>
                             <div class="card-body">
-                                <div>
-                                    {{-- @can('role-create') --}}
-                                    <a class="btn btn-success" href="{{ route('matkuls.create') }}">
-                                        Create New Matkul</a>
-                                    {{-- @endcan --}}
-                                </div>
                                 <div class="mt-4">
                                     <x-input-label for="tahun_ajar" :value="__('Tahun Ajaran')" />
                                     <select name="tahun_ajar" id="tahun_ajar" class="mt-1 block w-80">
@@ -69,28 +63,19 @@
                                             @endif
                                             <td>{{ $matkul->program_studi_kode_jurusan }}</td>
                                             <td>
-                                                <div class="btn-group">
-                                                    <a class="btn btn-info"
-                                                        href="{{ route('matkuls.show', $matkul->kode_matkul) }}">Show</a>
-                                                    {{-- @can('role-edit') --}}
-                                                    <a class="btn btn-primary"
-                                                        href="{{ route('matkuls.edit', $matkul->kode_matkul) }}">Edit</a>
-                                                    {{-- @endcan --}}
-                                                    {{-- @can('role-delete') --}}
-                                                    <form method="POST"
-                                                        action="{{ route('matkuls.destroy', $matkul->kode_matkul) }}"
-                                                        style="display:inline">
-                                                        @method('DELETE')
-                                                        @csrf
-                                                        <input type="submit" value="Delete"
-                                                            class="btn btn-block btn-outline-danger">
-                                                    </form>
-                                                    {{-- @endcan --}}
+                                                <div class="btn-group">             
+                                                    {{-- <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"> --}}
                                                 </div>
                                             </td>
                                         </tr>
                                     @endforeach
                                 </table>
+                                <div>
+                                    {{-- @can('role-create') --}}
+                                    <a class="btn btn-success" href="{{ route('matkuls.create') }}">
+                                        Ambil Matkul</a>
+                                    {{-- @endcan --}}
+                                </div>
                             </div>
                         </div>
                     </div>
