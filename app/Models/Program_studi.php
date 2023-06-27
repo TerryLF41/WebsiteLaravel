@@ -11,4 +11,6 @@ class Program_studi extends Model
     protected $fillable = [
         'nama',
     ];
+    protected $primaryKey = 'kode_jurusan';
+
 }
