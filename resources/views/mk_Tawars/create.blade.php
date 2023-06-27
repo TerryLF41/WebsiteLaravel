@@ -29,11 +29,12 @@
                                 @endif
                                 <div class="card-body">
                                     <div>
-                                        <a class="btn btn-success" href="{{ route('schedules.index') }}">
+                                        <a class="btn btn-success" href="{{ route('matkuls.index') }}">
                                             Back</a>
                                     </div>
                                     <form method="post" action="{{ route('schedules.store') }}">
                                         @csrf
+                                        <input type="hidden" name="matkul_kode_matkul" value="{{$kode_matkul}}">
                                         <div class="mt-4">
                                             <x-input-label for="hari" :value="__('Hari')" />
                                             <x-text-input id="hari" name="hari" type="text"

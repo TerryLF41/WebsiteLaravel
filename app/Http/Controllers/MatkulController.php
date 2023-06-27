@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Matkul;
+use App\Models\Mk_tawars;
 use App\Models\Program_studi;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
@@ -62,7 +63,8 @@ class MatkulController extends Controller
     public function show(string $id): View
     {
         $matkul = Matkul::find($id);
-        return view('matkul.show', compact('matkul'));
+        $mk_Tawars = Mk_tawars::all();
+        return view('matkul.show', compact('matkul','mk_Tawars'));
     }
 
     /**

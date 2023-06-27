@@ -10,7 +10,6 @@
                         <img src="{{asset("storage/logo/maranatha.png")}}" alt="logo maranatha" width="50px">
                     </a>
                 </div>
-
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
@@ -18,9 +17,6 @@
                     </x-nav-link>
                     <x-nav-link :href="route('matkuls.index')" :active="request()->routeIs('matkuls.index')">
                         {{ __('Matkul') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('schedules.index')" :active="request()->routeIs('schedules.index')">
-                        {{ __('Schedule') }}
                     </x-nav-link>
                     <x-nav-link :href="route('prodis.index')" :active="request()->routeIs('prodis.index')">
                         {{ __('Prodi') }}

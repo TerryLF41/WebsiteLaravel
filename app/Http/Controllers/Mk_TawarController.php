@@ -17,20 +17,22 @@ class Mk_TawarController extends Controller
      * Display a listing of the resource.
      */
     
-    public function index(Request $request): View
-    {
-        // dd("index");
+    // public function index(Request $request): View
+    // {
+    //     // dd("index");
         
-        $mk_Tawars = Mk_tawars::all();
-        return view('mk_Tawars.index', compact('mk_Tawars'));
-    }
+    //     $mk_Tawars = Mk_tawars::all();
+    //     return view('mk_Tawars.index', compact('mk_Tawars'));
+    // }
     /**
      * Show the form for creating a new resource.
      */
-    public function create(): View
+    public function create(Request $request, string $id): View
     {
+        $kode_matkul = $id;
+        // dd($kode_matkul);
         $mk_Tawars = Mk_tawars::all();
-        return view('mk_Tawars.create', compact("mk_Tawars"));
+        return view('mk_Tawars.create', compact("mk_Tawars","kode_matkul"));
     }
 
     /**
@@ -41,11 +43,13 @@ class Mk_TawarController extends Controller
         $this->validate($request, [
             'hari' => 'required|string',
             'jam' => 'required',
+            'matkul_kode_matkul' => 'required',
         ]);
 
         Mk_Tawars::create([
             'hari' => $request->input('hari'),
             'jam' => $request->input('jam'),
+            'matkul_kode_matkul'=> $request->input('matkul_kode_matkul'),
         ]);
         return redirect()->route('schedules.index')
             ->with('success', 'Schedule created successfully');
