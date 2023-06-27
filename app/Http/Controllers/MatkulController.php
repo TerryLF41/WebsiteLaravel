@@ -103,10 +103,10 @@ class MatkulController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id): RedirectResponse
+    public function destroy(string $id)
     {
-        DB::table("matkuls")->where('kode_matkul', $id)->delete();
-        return redirect()->route('matkul.index')
-            ->with('success', 'Matkul deleted successfully');
+        Matkul::destroy($id);
+        return redirect()->route('matkuls.index')
+            ->with('success', 'Matkul Delete successfully');
     }
 }
