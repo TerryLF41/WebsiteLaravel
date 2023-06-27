@@ -36,8 +36,8 @@
                                         @csrf
                                         <div class="mt-4">
                                             <x-input-label for="nama_matkul	" :value="__('Nama Matkul')" />
-                                            <x-text-input id="nama_matkul" name="nama_matkul" type="text"
-                                                class="mt-1 block w-80" autofocus autocomplete="nama_matkul	" />
+                                            <x-text-input id="nama_matkul" name="nama_matkul" type="number" min="1"
+                                                max="4" class="mt-1 block w-80" autofocus autocomplete="nama_matkul	" />
                                             <x-input-error class="mt-2" :messages="$errors->get('nama_matkul')" />
                                         </div>
                                         <div class="mt-4">
