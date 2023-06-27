@@ -19,7 +19,7 @@
                             <div class="card-body">
                                 <div>
                                 <a class="bg-green-500 text-white border-none rounded-md py-2 px-4"
-                                    href="{{ route('roles.index') }}">
+                                    href="{{ route('mk_Tawars.index') }}">
                                     Back</a>
                                 </div>
                                 @if (count($errors) > 0)
@@ -32,7 +32,7 @@
                                         </ul>
                                     </div>
                                 @endif
-                                <form method="post" action="{{ route('roles.update', ['role' => $role->id]) }}">
+                                <form method="post" action="{{ route('mk_Tawars.update', ['role' => $role->id]) }}">
                                     @csrf
                                     @method('PUT')
                                     <div>

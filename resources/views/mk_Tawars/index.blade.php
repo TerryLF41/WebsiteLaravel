@@ -33,8 +33,8 @@
                             <div class="card-body">
                                 <div>
                                     {{-- @can('role-create') --}}
-                                        <a class="btn btn-success" href="{{ route('matkulTimes.create') }}">
-                                            Create New Time</a>
+                                        <a class="btn btn-success" href="{{ route('mk_Tawars.create') }}">
+                                            Create New Schedule</a>
                                     {{-- @endcan --}}
                                 </div>
                                 <br>
@@ -44,21 +44,21 @@
                                         <th>Hari</th>
                                         <th width="280px">Action</th>
                                     </tr>
-                                    @foreach ($matkuls as $key => $matkul)
+                                    @foreach ($mk_Tawars as $key => $matkul)
                                         <tr>
                                             <td>{{ $matkul->jam }}</td>
                                             <td>{{ $matkul->hari }}</td>
                                             <td>
                                                 <div class="btn-group">
                                                     <a class="btn btn-info"
-                                                        href="{{ route('matkulTimes.show', $matkul->kode_matkul) }}">Show</a>
+                                                        href="{{ route('mk_Tawars.show', $matkul->kode_matkul) }}">Show</a>
                                                     @can('role-edit')
                                                         <a class="btn btn-primary"
-                                                            href="{{ route('matkulTimes.edit', $matkul->kode_matkul) }}">Edit</a>
+                                                            href="{{ route('mk_Tawars.edit', $matkul->kode_matkul) }}">Edit</a>
                                                     @endcan
                                                     @can('role-delete')
                                                         <form method="POST"
-                                                            action="{{ route('matkulTimes.destroy', $matkul->kode_matkul) }}"
+                                                            action="{{ route('mk_Tawars.destroy', $matkul->kode_matkul) }}"
                                                             style="display:inline">
                                                             @method('DELETE')
                                                             @csrf

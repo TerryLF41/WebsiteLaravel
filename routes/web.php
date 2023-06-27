@@ -3,7 +3,7 @@
 use App\Http\Controllers\MatkulController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProgramStudiController;
-use App\Http\Controllers\Mk_TawarsController;
+use App\Http\Controllers\Mk_TawarController;
 use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,7 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::resource('roles', RoleController::class);
     Route::resource('matkuls', MatkulController::class);
-    Route::resource('mk_Tawars', Mk_TawarsController::class);
+    Route::resource('mk_Tawars', Mk_TawarController::class);
     Route::resource('prodis', ProgramStudiController::class);
 });
 

@@ -21,16 +21,16 @@ class Mk_TawarController extends Controller
     {
         // dd("index");
         
-        $mk_Tawars = Mk_Tawars::all();
-        return view('matkulTime.index', compact('matkulTimes'));
+        $mk_Tawars = Mk_tawars::all();
+        return view('mk_Tawars.index', compact('mk_Tawars'));
     }
     /**
      * Show the form for creating a new resource.
      */
     public function create(): View
     {
-        $prodis = Program_studi::all();
-        return view('matkul.create', compact("prodis"));
+        $mk_Tawars = Mk_tawars::all();
+        return view('mk_Tawars.create', compact("mk_Tawars"));
     }
 
     /**

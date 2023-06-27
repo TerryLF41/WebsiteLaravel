@@ -4,7 +4,7 @@
             <div class="container-fluid">
                 @csrf
                 <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                    {{ __('Create Role') }}
+                    {{ __('Create Schedule') }}
                 </h2>
             </div>
         </div>
@@ -14,7 +14,7 @@
                     <div class="col-md-12">
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="cart-title">Buat Role</h3>
+                                <h3 class="cart-title">Buat Jadwal</h3>
                             </div>
                             <div class="card-tools">
                                 @if (count($errors) > 0)
@@ -29,10 +29,10 @@
                                 @endif
                                 <div class="card-body">
                                     <div>
-                                        <a class="btn btn-success" href="{{ route('matkuls.index') }}">
+                                        <a class="btn btn-success" href="{{ route('mk_Tawars.index') }}">
                                             Back</a>
                                     </div>
-                                    <form method="post" action="{{ route('roles.store') }}">
+                                    <form method="post" action="{{ route('mk_Tawars.store') }}">
                                         @csrf
                                         <div class="mt-4">
                                             <x-input-label for="hari" :value="__('Hari')" />
