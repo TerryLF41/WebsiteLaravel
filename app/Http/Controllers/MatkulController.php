@@ -20,9 +20,9 @@ class MatkulController extends Controller
     public function index(Request $request): View
     {
         // dd("index");
-        
-        $matkuls = Matkul::all();
-        return view('matkul.index', compact('matkuls'));
+        $tahunAjaran = 0;
+        $matkuls = Matkul::where('prodi', 1)->get();
+        return view('matkul.index', compact('matkuls', 'tahunAjaran'));
     }
     /**
      * Show the form for creating a new resource.
