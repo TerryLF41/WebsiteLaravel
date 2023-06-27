@@ -31,15 +31,30 @@
                             </div>
                             <div class="card-body">
                                 <div>
+<<<<<<< Updated upstream
                                     @can('role-create')
                                         <a class="btn btn-success" href="{{ route('roles.create') }}">
                                             Create New Role</a>
                                     @endcan
+=======
+                                    {{-- @can('role-create') --}}
+                                        <a class="btn btn-success" href="{{ route('matkuls.create') }}">
+                                            Create New Matkul</a>
+                                    {{-- @endcan --}}
+>>>>>>> Stashed changes
                                 </div>
+                                <br>
                                 <table class="table table-bordered">
                                     <tr>
                                         <th>No</th>
                                         <th>Name</th>
+<<<<<<< Updated upstream
+=======
+                                        <th>SKS</th>
+                                        <th>Semester</th>
+                                        <th>Status</th>
+                                        <th>Kode Program Studi</th>
+>>>>>>> Stashed changes
                                         <th width="280px">Action</th>
                                     </tr>
                                     @foreach ($roles as $key => $role)

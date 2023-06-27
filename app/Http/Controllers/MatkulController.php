@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Matkul;
+use App\Models\Program_studi;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
@@ -25,8 +26,8 @@ class MatkulController extends Controller
      */
     public function create(): View
     {
-        $permission = Permission::get();
-        return view('matkul.create', compact('permission'));
+        $prodis = Program_studi::all();
+        return view('matkul.create', compact("prodis"));
     }
 
     /**
@@ -39,7 +40,9 @@ class MatkulController extends Controller
             'permission' => 'required',
         ]);
 
-        $matkul = Matkul::create(['name' => $request->input('name')]);
+        $matkul = Matkul::create([
+            'name' => $request->input('name')
+        ]);
         $matkul->syncPermissions($request->input('permission'));
 
         return redirect()->route('matkul.index')
