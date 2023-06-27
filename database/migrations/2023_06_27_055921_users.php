@@ -11,12 +11,13 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
+            $table->id('id')->primary();
             $table->string('username');
             $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
+            $table->timestamps('created_at');
+            $table->timestamps('updated_at');
             $table->string('email')->unique();
+            $table->foreign('program_studi_kode_jurusan')->references('program_studi')->on('kode_jurusan');
         });
     }
 
