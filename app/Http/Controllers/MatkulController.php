@@ -68,15 +68,11 @@ class MatkulController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id): View
+    public function edit(String $id): View
     {
         $matkul = Matkul::find($id);
-        $permission = Permission::get();
-        $matkulPermissions = DB::table("matkul_has_permissions")->where("matkul_has_permissions.matkul_id", $id)
-            ->pluck('matkul_has_permissions.permission_id', 'matkul_has_permissions.permission_id')
-            ->all();
 
-        return view('matkul.edit', compact('matkul', 'permission', 'matkulPermissions'));
+        return view('matkul.edit', compact('matkul'));
     }
 
     /**

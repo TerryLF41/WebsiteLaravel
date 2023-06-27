@@ -4,7 +4,7 @@
             <div class="container-fluid">
                 @csrf
                 <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                    {{ __('Edit Role') }}
+                    {{ __('Edit Matkul') }}
                 </h2>
             </div>
         </div>
@@ -14,12 +14,12 @@
                     <div class="col-md-6">
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="cart-title">Edit Role</h3>
+                                <h3 class="cart-title">Edit Matkul</h3>
                             </div>
                             <div class="card-body">
                                 <div>
                                 <a class="bg-green-500 text-white border-none rounded-md py-2 px-4"
-                                    href="{{ route('roles.index') }}">
+                                    href="{{ route('matkuls.index') }}">
                                     Back</a>
                                 </div>
                                 @if (count($errors) > 0)
@@ -32,79 +32,49 @@
                                         </ul>
                                     </div>
                                 @endif
-                                <form method="post" action="{{ route('roles.update', ['role' => $role->id]) }}">
+                                <form method="post" action="{{ route('matkuls.update', ['matkul' => $matkul->kode_matkul]) }}">
                                     @csrf
                                     @method('PUT')
                                     <div>
-                                        <x-input-label for="name" :value="__('Name')" class="mt-4" />
-                                        <x-text-input id="name" name="name" type="text"
-                                            class="mt-1 block w-full" :value="old('name', $role['name'])" required autofocus
-                                            autocomplete="name" />
-                                        <x-input-error class="mt-2" :messages="$errors->get('name')" />
+                                        <x-input-label for="nama_matkul" :value="__('Nama Matkul')" class="mt-4" />
+                                        <x-text-input id="nama_matkul" name="nama_matkul" type="text"
+                                            class="mt-1 block w-full" :value="old('nama_matkul', $matkul['nama_matkul'])" required autofocus
+                                            autocomplete="nama_matkul" />
+                                        <x-input-error class="mt-2" :messages="$errors->get('nama_matkul')" />
                                     </div>
                                     <div>
-                                        <x-input-label for="permission[]" :value="__('Permission')" class="mt-2" />
-                                        @php
-                                            $groupedPermissions = [];
-                                            foreach ($permission as $value) {
-                                                $groupName = explode('-', $value->name)[0];
-                                                if (!array_key_exists($groupName, $groupedPermissions)) {
-                                                    $groupedPermissions[$groupName] = [];
-                                                }
-                                                $groupedPermissions[$groupName][] = $value;
-                                            }
-                                        @endphp
-                                        <table
-                                            class="table-fixed border border-collapse border-black w-full rounded-mg">
-                                            @foreach ($groupedPermissions as $groupName => $groupPermissions)
-                                                <tr>
-                                                    <td
-                                                        class="mr-4 border border-solid border-slade-500 border-spacing-2 text-center">
-                                                        {{ $groupName }}</td>
-                                                    @php
-                                                        $groupPermissions = collect($groupPermissions);
-                                                        $permissionOrder = ['create', 'delete', 'edit', 'list'];
-                                                        $newGroupPermissions = [];
-                                                        $prefix = '';
-                                                        
-                                                        if (!empty($groupPermissions->first())) {
-                                                            $prefix = explode('-', $groupPermissions->first()['name'])[0];
-                                                        }
-                                                        
-                                                        foreach ($permissionOrder as $action) {
-                                                            $permissionName = $prefix . '-' . $action;
-                                                        
-                                                            if ($groupPermissions->contains('name', $permissionName)) {
-                                                                $newGroupPermissions[] = $groupPermissions->firstWhere('name', $permissionName);
-                                                            } else {
-                                                                $newGroupPermissions[] = ['id' => '-1', 'name' => 'default-value'];
-                                                            }
-                                                        }
-                                                        $sortedPermissions = $newGroupPermissions;
-                                                    @endphp
-                                                    @foreach ($sortedPermissions as $permission)
-                                                        <td
-                                                            class="mr-4 border border-solid border-slade-500 border-spacing-2">
-                                                            @if ($permission['id'] == -1)
-                                                                @continue
-                                                            @else
-                                                                <input type="checkbox" name="permission[]"
-                                                                    value="{{ $permission['id'] }}" class="name"
-                                                                    {{ in_array($permission['id'], $rolePermissions) ? 'checked' : '' }}>
-                                                            @endif
-                                                            @php
-                                                                $namePermission = explode('-', $permission['name']);
-                                                                $permissionName = $namePermission[1];
-                                                            @endphp
-                                                            {{ $permissionName }}
-                                                            <x-input-error class="mt-2" :messages="$errors->get('permission')" />
-
-                                                        </td>
-                                                    @endforeach
-                                                </tr>
-                                            @endforeach
-                                        </table>
+                                        <x-input-label for="sks" :value="__('SKS')" class="mt-4" />
+                                        <x-text-input id="sks" name="sks" type="number" min="1" min="1"
+                                            class="mt-1 block w-full" :value="old('sks', $matkul['sks'])" required autofocus
+                                            autocomplete="sks" />
+                                        <x-input-error class="mt-2" :messages="$errors->get('sks')" />
                                     </div>
+                                    <div>
+                                        <x-input-label for="semester" :value="__('Semester')" class="mt-4" />
+                                        <x-text-input id="semester" name="semester" type="number" min="1" max="8"
+                                            class="mt-1 block w-full" :value="old('semester', $matkul['semester'])" required autofocus
+                                            autocomplete="semester" />
+                                        <x-input-error class="mt-2" :messages="$errors->get('semester')" />
+                                    </div>
+                                    {{-- Ini Status ama Prodi belon --}}
+                                    <div class="mt-4">
+                                        <x-input-label for="status" :value="__('Status')" />
+                                        <select name="status" id="status" class="mt-1 block w-80">
+                                            <option value="{{ 0 }}">praktikum</option>
+                                            <option value="{{ 1 }}">teori</option>
+                                        </select>
+                                        <x-input-error :messages="$errors->get('status')" class="mt-2" />
+                                    </div>
+                                    {{-- <div class="mt-4">
+                                        <x-input-label for="prodi" :value="__('Prodi')" />
+                                        <select name="prodi" id="prodi" class="mt-1 block w-80">
+                                            @foreach ($prodis as $prodi)
+                                                <option value="{{ $prodi->kode_jurusan }}">{{ $prodi->nama }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        <x-input-error :messages="$errors->get('prodi')" class="mt-2" />
+                                    </div> --}}
                                     <x-primary-button class="mt-4">{{ __('Edit') }}</x-primary-button>
                                 </form>
                             </div>

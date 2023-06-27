@@ -43,7 +43,7 @@
                                         <div class="mt-4">
                                             <x-input-label for="sks" :value="__('SKS')" />
                                             <x-text-input id="sks" name="sks" type="number" min="1"
-                                                max="4"  class="mt-1 block w-80" autofocus autocomplete="sks" />
+                                            min="1"  class="mt-1 block w-80" autofocus autocomplete="sks" />
                                             <x-input-error class="mt-2" :messages="$errors->get('sks')" />
                                         </div>
                                         <div class="mt-4">
