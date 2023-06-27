@@ -42,7 +42,10 @@ class MatkulController extends Controller
         ]);
 
         $matkul = Matkul::create([
-            'name' => $request->input('name')
+            'name' => $request->input('name'),
+            'sks' => $request->input('sks'),
+            'semester' => $request->input('semester'),
+            'prodi' => $request->input('prodi')
         ]);
         $matkul->syncPermissions($request->input('permission'));
 
