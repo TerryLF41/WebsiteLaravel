@@ -71,8 +71,8 @@ class MatkulController extends Controller
     public function edit(String $id): View
     {
         $matkul = Matkul::find($id);
-
-        return view('matkul.edit', compact('matkul'));
+        $prodis = Program_studi::all();
+        return view('matkul.edit', compact('matkul','prodis'));
     }
 
     /**
@@ -89,12 +89,14 @@ class MatkulController extends Controller
         ]);
 
         $matkul = Matkul::find($id);
-        $matkul->name = $request->input('name');
+        $matkul->nama_matkul = $request->input('nama_matkul');
+        $matkul->sks = $request->input('sks');
+        $matkul->semester = $request->input('semester');
+        $matkul->status = $request->input('status');
+        $matkul->program_studi_kode_jurusan = $request->input('prodi');
         $matkul->save();
 
-        $matkul->syncPermissions($request->input('permission'));
-
-        return redirect()->route('matkul.index')
+        return redirect()->route('matkuls.index')
             ->with('success', 'Matkul updated successfully');
     }
 
