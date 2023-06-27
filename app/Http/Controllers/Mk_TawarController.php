@@ -42,13 +42,15 @@ class Mk_TawarController extends Controller
     {
         $this->validate($request, [
             'hari' => 'required|string',
-            'jam' => 'required',
+            'jamMulai' => 'required',
+            'jamSelesai' => 'required',
             'matkul_kode_matkul' => 'required',
         ]);
 
         Mk_Tawars::create([
             'hari' => $request->input('hari'),
-            'jam' => $request->input('jam'),
+            'jamMulai' => $request->input('jamMulai'),
+            'jamSelesai' => $request->input('jamSelesai'),
             'matkul_kode_matkul'=> $request->input('matkul_kode_matkul'),
         ]);
         return redirect()->route('matkuls.show',$request->input('matkul_kode_matkul'))

@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('mk_tawars', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('matkul_kode_matkul');
-            $table->string("jam");
+            $table->string("jamMulai");
+            $table->string("jamSelesai");
             $table->string("hari");
             $table->timestamps();
             $table->foreign('matkul_kode_matkul')->references('kode_matkul')->on('matkuls');

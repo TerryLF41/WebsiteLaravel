@@ -9,7 +9,8 @@ class Mk_tawars extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'jam',
+        'jamMulai',
+        'jamSelesai',
         'hari',
         'matkul_kode_matkul',
     ];
