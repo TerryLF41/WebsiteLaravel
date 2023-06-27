@@ -21,8 +21,10 @@
                                     <a class="btn btn-success" href="{{ route('matkuls.index') }}">
                                         Back</a>
                                 </div>
-                                <a class="btn btn-primary" href="{{ route('schedules.create', $matkul->kode_matkul) }}">
-                                    Create New Schedule</a>
+                                @can("prodi-create")
+                                    <a class="btn btn-primary" href="{{ route('schedules.create', $matkul->kode_matkul) }}">
+                                        Create New Schedule</a>
+                                @endcan
                                 <div>
                                     <div class="form-group">
                                         <strong>Nama Matkul:</strong>
