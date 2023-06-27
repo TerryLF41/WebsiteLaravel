@@ -8,6 +8,13 @@ use Illuminate\Support\Facades\DB;
 
 class ProgramStudiController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:prodi-list|prodi-create|prodi-edit|prodi-delete', ['only' => ['index', 'show']]);
+        $this->middleware('permission:prodi-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:prodi-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:prodi-delete', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      */
