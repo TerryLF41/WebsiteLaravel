@@ -4,7 +4,7 @@
             <div class="container-fluid">
                 @csrf
                 <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                    {{ __('Show Role') }}
+                    {{ __('Show Matkul') }}
                 </h2>
             </div>
         </div>
@@ -14,26 +14,17 @@
                     <div class="col-md-6">
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="cart-title">{{ $role->name }}</h3>
+                                <h3 class="cart-title">{{ $matkul->nama_matkul }}</h3>
                             </div>
                             <div class="card-body">
                                 <div>
-                                    <a class="btn btn-success" href="{{ route('roles.index') }}">
+                                    <a class="btn btn-success" href="{{ route('matkuls.index') }}">
                                         Back</a>
                                 </div>
                                 <div>
                                     <div class="form-group">
                                         <strong>Name:</strong>
-                                        <span>{{ $role->name }}</span>
-                                    </div>
-                                    <div class="form-group">
-                                        <strong>Permission:</strong>
-                                        @if (!empty($rolePermissions))
-                                            @foreach ($rolePermissions as $v)
-                                                <span
-                                                    class="inline-block px-2 py-1 rounded bg-green-500 mr-1 mb-1 text-white">{{ $v->name }}</span>
-                                            @endforeach
-                                        @endif
+                                        <span>{{ $matkul->nama_matkul }}</span>
                                     </div>
                                 </div>
                             </div>
