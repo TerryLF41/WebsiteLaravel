@@ -22,7 +22,7 @@ class PermissionTableSeeder extends Seeder
             'prodi-create',
             'prodi-edit',
             'prodi-delete',
-
+            'ambilMatkul-list',
          ];
          
          foreach ($permissions as $permission) {

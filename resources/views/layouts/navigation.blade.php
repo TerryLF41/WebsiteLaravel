@@ -7,7 +7,7 @@
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
                         {{-- <x-application-logo class="block h-9 w-auto fill-current text-gray-800" /> --}}
-                        <img src="{{asset("storage/logo/maranatha.png")}}" alt="logo maranatha" width="50px">
+                        <img src="{{ asset('storage/logo/maranatha.png') }}" alt="logo maranatha" width="50px">
                     </a>
                 </div>
                 <!-- Navigation Links -->
@@ -18,9 +18,11 @@
                     <x-nav-link :href="route('matkuls.index')" :active="request()->routeIs('matkuls.index')">
                         {{ __('Matkul') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dkbs.index')" :active="request()->routeIs('dkbs.index')">
-                        {{ __('Ambil Matkul') }}
-                    </x-nav-link>
+                    @can('ambilMatkul-list')
+                        <x-nav-link :href="route('dkbs.index')" :active="request()->routeIs('dkbs.index')">
+                            {{ __('Ambil Matkul') }}
+                        </x-nav-link>
+                    @endcan
                     <x-nav-link :href="route('prodis.index')" :active="request()->routeIs('prodis.index')">
                         {{ __('Prodi') }}
                     </x-nav-link>
@@ -95,9 +97,11 @@
             <x-responsive-nav-link :href="route('matkuls.index')" :active="request()->routeIs('matkuls.index')">
                 {{ __('Matkul') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('dkbs.index')" :active="request()->routeIs('dkbs.index')">
-                {{ __('Ambil Matkul') }}
-            </x-responsive-nav-link>
+            @can('ambilMatkul-list')
+                <x-responsive-nav-link :href="route('dkbs.index')" :active="request()->routeIs('dkbs.index')">
+                    {{ __('Ambil Matkul') }}
+                </x-responsive-nav-link>
+            @endcan
             <x-responsive-nav-link :href="route('prodis.index')" :active="request()->routeIs('prodis.index')">
                 {{ __('Prodi') }}
             </x-responsive-nav-link>
