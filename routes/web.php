@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProgramStudiController;
 use App\Http\Controllers\Mk_TawarController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\DkbsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,6 +34,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('roles', RoleController::class);
     Route::resource('matkuls', MatkulController::class);
     Route::resource('mk_Tawars', Mk_TawarController::class);
+    Route::resource('dkbs', DkbsController::class);
     Route::resource('prodis', ProgramStudiController::class);
 });
 
