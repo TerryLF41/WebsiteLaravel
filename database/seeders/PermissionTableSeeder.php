@@ -19,9 +19,9 @@ class PermissionTableSeeder extends Seeder
             'role-edit',
             'role-delete',
             'prodi-list',
-            'prodi-list',
-            'prodi-list',
-            'prodi-list',
+            'prodi-create',
+            'prodi-edit',
+            'prodi-delete',
 
          ];
          

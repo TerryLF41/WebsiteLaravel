@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use Spatie\Permission\Models\Role;
 
 class RegisteredUserController extends Controller
 {
@@ -23,7 +24,8 @@ class RegisteredUserController extends Controller
     public function create(): View
     {
         $prodis = Program_studi::all();
-        return view('auth.register', compact("prodis"));
+        $roles = Role::pluck('name', 'name')->all();
+        return view('auth.register', compact("prodis","roles"));
     }
 
     /**
@@ -38,7 +40,8 @@ class RegisteredUserController extends Controller
             'username' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'prodi' => ['required','integer']
+            'prodi' => ['required', 'integer'],
+            'roles' => ['required'],
         ]);
         // dd($request->all());
         $user = User::create([
@@ -47,7 +50,7 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
             'program_studi_kode_jurusan' => $request->input("prodi")
         ]);
-
+        $user->assignRole($request->input('roles'));
         event(new Registered($user));
 
         Auth::login($user);
