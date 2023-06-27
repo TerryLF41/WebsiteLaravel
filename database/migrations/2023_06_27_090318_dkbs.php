@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('dkbs', function (Blueprint $table) {
+            $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('matkul_kode_matkul');
             $table->timestamps();

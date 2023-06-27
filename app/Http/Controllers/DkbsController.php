@@ -12,16 +12,17 @@ use Illuminate\Http\RedirectResponse;
 use Spatie\Permission\Models\Permission;
 
 use DB;
+
 class DkbsController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    
+
     public function index(Request $request): View
     {
         // dd("index");
-        
+
         $dkbs = Dkbs::all();
         // dd($dkbs);
         $user = Auth::user();
@@ -49,7 +50,18 @@ class DkbsController extends Controller
         $matkulAmbil = $request->input("matkulAmbil");
         // dd($matkulAmbil);
         // dd(Auth::user()->id);
+        $totalSks = 0;
         foreach ($matkulAmbil as $value) {
+            $matkul = Matkul::find($value);
+            // dd($matkul);
+            $totalSks += $matkul->sks;
+        }
+        // dd($totalSks);
+        if($totalSks > 24){
+            return redirect()->route('dkbs.index')
+            ->with('error', 'SKS Melebihi');
+        }
+        foreach ($matkulAmbil as $key => $value) {
             Dkbs::create([
                 'user_id' => Auth::user()->id,
                 'matkul_kode_matkul' => $value

@@ -17,10 +17,10 @@
                                 <h3 class="cart-title">Daftar Matkul Diambil</h3>
                             </div>
                             <div class="card-tools">
-                                @if (session('error'))
-                                    <div class="alert alert-danger">
-                                        <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)"
-                                            class="text-sm text-white">{{ __('error.') }}</p>
+                                @if ($message = Session::get('error'))
+                                    <div class="alert alert-danger" x-data="{ show: true }" x-show="show" x-transition
+                                        x-init="setTimeout(() => show = false, 2000)">
+                                        <p class="text-sm text-white">{{ __($message) }}</p>
                                     </div>
                                 @endif
                                 @if ($message = Session::get('success'))
@@ -33,8 +33,8 @@
                             <div class="card-body">
                                 <div>
                                     {{-- @can('role-create') --}}
-                                        <a class="btn btn-success" href="{{ route('dkbs.create') }}">
-                                            Create New Matkul</a>
+                                    <a class="btn btn-success" href="{{ route('dkbs.create') }}">
+                                        Create New Matkul</a>
                                     {{-- @endcan --}}
                                 </div>
                                 {{-- <div class="mt-4">
