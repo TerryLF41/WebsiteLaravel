@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('mk_tawars', function (Blueprint $table) {
+            $table->id();
             $table->unsignedBigInteger('matkul_kode_matkul');
             $table->unsignedBigInteger('proyek_pendidikan');
-            $table->id();
             $table->string("jam");
             $table->string("hari");
             $table->foreign('matkul_kode_matkul')->references('kode_matkul')->on('matkuls');
