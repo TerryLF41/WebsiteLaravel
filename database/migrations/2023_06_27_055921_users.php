@@ -11,15 +11,16 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id('id')->primary();
+            $table->id();
             $table->string('username');
             $table->string('password');
-            $table->timestamps('created_at');
-            $table->timestamps('updated_at');
             $table->string('email')->unique();
-            $table->foreign('program_studi_kode_jurusan')->references('program_studis')->on('kode_jurusan');
+            $table->unsignedBigInteger('program_studi_kode_jurusan');
+            $table->foreign('program_studi_kode_jurusan')->references('kode_jurusan')->on('program_studis');
+            $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.
